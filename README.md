@@ -13,11 +13,11 @@
 **Requires PHP:** 8.2  
 **License:** GPLv2 or later  
 
-## 🚨 Security Notice
+## Security Notice
 
 This is **SudoWP Advanced Tabs Gutenberg Block**, a community-maintained and security-hardened fork of the abandoned "Advanced Tabs Gutenberg Block" plugin. The original plugin may contain security vulnerabilities or be incompatible with modern PHP versions. **Use this version for production environments.**
 
-## 🛡️ Why this fork?
+## Why this fork?
 
 This plugin has been forked to ensure compatibility with PHP 8.2+ and to implement strict security hardening protocols. The original plugin had potential security gaps and outdated code structures.
 
@@ -27,7 +27,7 @@ This plugin has been forked to ensure compatibility with PHP 8.2+ and to impleme
 *   **Security Hardening:** Implementation of strict input sanitization, output escaping, and nonce verification.
 *   **Architecture Modernization:** Refactored codebase to use modern OOP standards (Singleton pattern, Namespaces).
 
-## 📖 Description
+## Description
 
 **Advanced Tabs Block** is a custom Gutenberg Block developed with **Gutenberg Native Components**. You can easily showcase your contents in **Tabs Style** using this block. It has come with a lot of customization and styling options.
 
@@ -43,14 +43,14 @@ This plugin has been forked to ensure compatibility with PHP 8.2+ and to impleme
 *   **Drag & Drop Use**
 *   **All types of contents are allowed as Tabs Content**
 
-## 💿 Installation
+## Installation
 
 1.  Deactivate and delete the original "Advanced Tabs Gutenberg Block" plugin if installed.
 2.  Upload the `sudowp-advanced-tabs-block` folder to the `/wp-content/plugins/` directory.
 3.  Activate the plugin through the 'Plugins' screen in WordPress.
 4.  Simply go to Gutenberg Block Editor and you will find a new category with a new Block named "Advanced Tabs Block".
 
-## 📋 Changelog
+## Changelog
 
 ### 1.2.7
 *   **Security:** Major security overhaul and modernization by SudoWP.
