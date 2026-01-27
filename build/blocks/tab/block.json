@@ -1,0 +1,19 @@
+{
+  "apiVersion": 3,
+  "name": "atbs/tab",
+  "title": "Tab",
+  "category": "atbs-block",
+  "description": "Show your content in a horizontal tab.",
+  "parent": [
+    "atbs/tabs"
+  ],
+  "supports": {
+    "html": false,
+    "anchor": false,
+    "customClassName": false
+  },
+  "textdomain": "sudowp-advanced-tabs-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

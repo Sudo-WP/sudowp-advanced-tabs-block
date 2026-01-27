@@ -1,0 +1,36 @@
+{
+  "apiVersion": 3,
+  "name": "atbs/tabs",
+  "title": "Horizontal Tab",
+  "category": "atbs-block",
+  "description": "Show your content in a horizontal tab.",
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "example": {
+    "attributes": {
+      "tab1": {
+        "title": "Tab 1",
+        "content": "<p>Tab 1 content</p>"
+      },
+      "tab2": {
+        "title": "Tab 2",
+        "content": "<p>Tab 2 content</p>"
+      },
+      "tab3": {
+        "title": "Tab 3",
+        "content": "<p>Tab 3 content</p>"
+      }
+    }
+  },
+  "textdomain": "sudowp-advanced-tabs-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewScript": "file:./view.js",
+  "style": "file:./style-index.css"
+}
