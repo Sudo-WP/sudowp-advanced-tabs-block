@@ -43,9 +43,10 @@ class FontsLoader
             $attributes = $block['attrs'];
             foreach ($attributes as $key => $value) {
                 if (!empty($value) && str_starts_with((string) $key, 'atbs_') && str_contains((string) $key, 'FontFamily')) {
-                    // Sanitize font name - only allow alphanumeric, spaces, hyphens, and common punctuation
+                    // Sanitize font name - only allow alphanumeric, spaces, and hyphens
+                    // Removed quotes to prevent CSS injection
                     $sanitized = sanitize_text_field((string) $value);
-                    $sanitized = preg_replace('/[^a-zA-Z0-9\s\-\'"]/', '', $sanitized);
+                    $sanitized = preg_replace('/[^a-zA-Z0-9\s\-]/', '', $sanitized);
                     
                     if (!empty($sanitized)) {
                         $this->all_fonts[] = $sanitized;

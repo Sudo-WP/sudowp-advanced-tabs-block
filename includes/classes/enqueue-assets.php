@@ -127,8 +127,9 @@ class EnqueueAssets
         // Remove javascript: protocol
         $css = preg_replace('/javascript\s*:/i', '', $css);
         
-        // Remove data: protocol (except for safe image formats)
-        $css = preg_replace('/data:(?!image\/(png|jpg|jpeg|gif|svg\+xml|webp))/i', '', $css);
+        // Remove ALL data: URIs to prevent any encoding-based attacks
+        // WordPress will regenerate safe ones if needed
+        $css = preg_replace('/data:/i', '', $css);
         
         // Remove expression() which can execute JavaScript
         $css = preg_replace('/expression\s*\(/i', '', $css);
@@ -138,6 +139,9 @@ class EnqueueAssets
         
         // Remove behavior property (IE specific)
         $css = preg_replace('/behavior\s*:/i', '', $css);
+        
+        // Remove import to prevent loading external stylesheets
+        $css = preg_replace('/@import/i', '', $css);
         
         return $css;
     }

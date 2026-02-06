@@ -83,15 +83,17 @@ final class Plugin
      */
     private function init_security_headers(): void
     {
-        add_action('admin_init', function() {
+        add_action('send_headers', function() {
             // Only apply to our plugin's admin pages
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Just checking page parameter
-            if (isset($_GET['page']) && sanitize_key($_GET['page']) === 'atbs-block') {
+            if (is_admin() && isset($_GET['page']) && sanitize_key($_GET['page']) === 'atbs-block') {
                 // X-Content-Type-Options: prevent MIME type sniffing
-                header('X-Content-Type-Options: nosniff');
-                
-                // X-Frame-Options: prevent clickjacking (allow same origin for iframe embeds)
-                header('X-Frame-Options: SAMEORIGIN');
+                if (!headers_sent()) {
+                    header('X-Content-Type-Options: nosniff');
+                    
+                    // X-Frame-Options: prevent clickjacking (allow same origin for iframe embeds)
+                    header('X-Frame-Options: SAMEORIGIN');
+                }
             }
         });
     }
