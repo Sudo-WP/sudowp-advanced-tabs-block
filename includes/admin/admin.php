@@ -104,6 +104,7 @@ class Admin
                                                         src="https://www.youtube.com/embed/ZqCh5G-FMSU" 
                                                         title="<?php esc_attr_e('Advanced Tabs Block Tutorial Video', 'sudowp-advanced-tabs-block'); ?>"
                                                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                        sandbox="allow-scripts allow-same-origin allow-presentation"
                                                         allowfullscreen 
                                                         style="border: 0;"></iframe>
                                                 </div>

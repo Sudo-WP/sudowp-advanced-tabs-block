@@ -46,6 +46,7 @@ class FontsLoader
                     // Sanitize font name - only allow alphanumeric, spaces, and hyphens
                     // Removed quotes to prevent CSS injection
                     $sanitized = sanitize_text_field((string) $value);
+                    // Hyphen at the end of character class for clarity
                     $sanitized = preg_replace('/[^a-zA-Z0-9\s\-]/', '', $sanitized);
                     
                     if (!empty($sanitized)) {

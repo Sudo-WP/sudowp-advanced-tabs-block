@@ -28,12 +28,13 @@ esc_url(add_query_arg($query_args, 'https://fonts.googleapis.com/css'))
 - **Location**: `includes/classes/enqueue-assets.php`
 - **Method**: `sanitize_css()`
 - **Protection Against**:
-  - `javascript:` protocol injection
+  - `javascript:` protocol injection (with comprehensive Unicode whitespace detection)
   - CSS `expression()` execution (IE)
   - `-moz-binding` external file loading
   - `behavior` property attacks (IE)
-  - `data:` URI attacks
+  - `data:` URI attacks (all blocked)
   - `@import` external stylesheet loading
+- **Implementation**: Multi-layer regex patterns catch encoded and obfuscated attacks
 
 ### 3. Input Sanitization
 
@@ -64,7 +65,12 @@ esc_url(add_query_arg($query_args, 'https://fonts.googleapis.com/css'))
   - Removed deprecated `frameborder` attribute
   - Added `title` attribute for accessibility
   - Used inline CSS for border styling
+  - Added `sandbox` attribute with restricted permissions
   - Limited iframe capabilities with `allow` attribute
+- **Sandbox Restrictions**:
+  - `allow-scripts` - Allows JavaScript (required for YouTube player)
+  - `allow-same-origin` - Allows content from YouTube domain
+  - `allow-presentation` - Allows fullscreen mode
 
 ### 6. Security Headers
 

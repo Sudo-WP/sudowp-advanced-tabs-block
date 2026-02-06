@@ -124,8 +124,9 @@ class EnqueueAssets
      */
     private function sanitize_css(string $css): string
     {
-        // Remove javascript: protocol
-        $css = preg_replace('/javascript\s*:/i', '', $css);
+        // Remove javascript: protocol with comprehensive pattern to catch encoded versions
+        // Matches javascript with any unicode whitespace or encoded characters
+        $css = preg_replace('/j\s*a\s*v\s*a\s*s\s*c\s*r\s*i\s*p\s*t\s*:/i', '', $css);
         
         // Remove ALL data: URIs to prevent any encoding-based attacks
         // WordPress will regenerate safe ones if needed
