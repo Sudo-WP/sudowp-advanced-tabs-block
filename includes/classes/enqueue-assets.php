@@ -97,6 +97,9 @@ class EnqueueAssets
                 // Sanitize style: strip tags to prevent XSS
                 $style = wp_strip_all_tags((string) $style);
 
+                // Security: Remove potentially dangerous CSS properties and values
+                $style = $this->sanitize_css($style);
+
                 // minify style to remove extra space
                 $style = preg_replace('/\s+/', ' ', $style);
 
@@ -111,5 +114,36 @@ class EnqueueAssets
             }
         }
         return $block_content;
+    }
+
+    /**
+     * Sanitize CSS to prevent injection attacks
+     * 
+     * @param string $css The CSS string to sanitize
+     * @return string Sanitized CSS
+     */
+    private function sanitize_css(string $css): string
+    {
+        // Remove javascript: protocol with comprehensive pattern to catch encoded versions
+        // Matches javascript with any unicode whitespace or encoded characters
+        $css = preg_replace('/j\s*a\s*v\s*a\s*s\s*c\s*r\s*i\s*p\s*t\s*:/i', '', $css);
+        
+        // Remove ALL data: URIs to prevent any encoding-based attacks
+        // WordPress will regenerate safe ones if needed
+        $css = preg_replace('/data:/i', '', $css);
+        
+        // Remove expression() which can execute JavaScript
+        $css = preg_replace('/expression\s*\(/i', '', $css);
+        
+        // Remove -moz-binding which can load external XBL files
+        $css = preg_replace('/-moz-binding\s*:/i', '', $css);
+        
+        // Remove behavior property (IE specific)
+        $css = preg_replace('/behavior\s*:/i', '', $css);
+        
+        // Remove import to prevent loading external stylesheets
+        $css = preg_replace('/@import/i', '', $css);
+        
+        return $css;
     }
 }

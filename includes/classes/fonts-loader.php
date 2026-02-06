@@ -43,7 +43,15 @@ class FontsLoader
             $attributes = $block['attrs'];
             foreach ($attributes as $key => $value) {
                 if (!empty($value) && str_starts_with((string) $key, 'atbs_') && str_contains((string) $key, 'FontFamily')) {
-                    $this->all_fonts[] = sanitize_text_field((string) $value);
+                    // Sanitize font name - only allow alphanumeric, spaces, and hyphens
+                    // Removed quotes to prevent CSS injection
+                    $sanitized = sanitize_text_field((string) $value);
+                    // Hyphen at the end of character class for clarity
+                    $sanitized = preg_replace('/[^a-zA-Z0-9\s\-]/', '', $sanitized);
+                    
+                    if (!empty($sanitized)) {
+                        $this->all_fonts[] = $sanitized;
+                    }
                 }
             }
         }
@@ -84,11 +92,15 @@ class FontsLoader
 
                     $query_args = [
                         'family' => $gfonts,
+                        'display' => 'swap',
                     ];
+
+                    // Security: esc_url() prevents XSS vulnerability with add_query_arg
+                    $fonts_url = esc_url(add_query_arg($query_args, 'https://fonts.googleapis.com/css'));
 
                     wp_register_style(
                         'atbs-fonts',
-                        add_query_arg($query_args, 'https://fonts.googleapis.com/css'),
+                        $fonts_url,
                         []
                     );
                     wp_enqueue_style('atbs-fonts');

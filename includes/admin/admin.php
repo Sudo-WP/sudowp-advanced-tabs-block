@@ -101,9 +101,12 @@ class Admin
                                                 </p>
                                                 <div class="video__container">
                                                     <iframe width="560" height="315"
-                                                        src="https://www.youtube.com/embed/ZqCh5G-FMSU" frameborder="0"
+                                                        src="https://www.youtube.com/embed/ZqCh5G-FMSU" 
+                                                        title="<?php esc_attr_e('Advanced Tabs Block Tutorial Video', 'sudowp-advanced-tabs-block'); ?>"
                                                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                                        allowfullscreen></iframe>
+                                                        sandbox="allow-scripts allow-same-origin allow-presentation"
+                                                        allowfullscreen 
+                                                        style="border: 0;"></iframe>
                                                 </div>
                                             </div>
                                             <div class="tab__panel_right">
@@ -115,7 +118,7 @@ class Admin
                                                         <?php esc_html_e('If you find any issue or have any suggestion, please let me know.', 'sudowp-advanced-tabs-block'); ?>
                                                     </p>
                                                     <a href="https://wordpress.org/support/plugin/advanced-tabs-block/"
-                                                        class="support__link" target="_blank">
+                                                        class="support__link" target="_blank" rel="noopener noreferrer">
                                                         <?php esc_html_e('Support', 'sudowp-advanced-tabs-block'); ?>
                                                     </a>
                                                 </div>
@@ -127,7 +130,7 @@ class Admin
                                                         <?php esc_html_e('If you like this plugin, please share your opinion', 'sudowp-advanced-tabs-block'); ?>
                                                     </p>
                                                     <a href="https://wordpress.org/support/plugin/advanced-tabs-block/reviews/"
-                                                        class="support__link" target="_blank">
+                                                        class="support__link" target="_blank" rel="noopener noreferrer">
                                                         <?php esc_html_e('Rate the Plugin', 'sudowp-advanced-tabs-block'); ?>
                                                     </a>
                                                 </div>
@@ -138,7 +141,7 @@ class Admin
                                                     <p class="support__description">
                                                         <?php esc_html_e('Want to get more similar blocks, please visit my website', 'sudowp-advanced-tabs-block'); ?>
                                                     </p>
-                                                    <a href="https://makegutenblock.com" class="support__link" target="_blank">
+                                                    <a href="https://makegutenblock.com" class="support__link" target="_blank" rel="noopener noreferrer">
                                                         <?php esc_html_e('Visit my Website', 'sudowp-advanced-tabs-block'); ?>
                                                     </a>
                                                 </div>
@@ -153,19 +156,19 @@ class Admin
                                             </p>
                                             <div class="available__links">
                                                 <a href="mailto:zbinsaifullah@gmail.com" class="available__link mail"
-                                                    target="_blank">
+                                                    target="_blank" rel="noopener noreferrer">
                                                     <?php esc_html_e('Send Email', 'sudowp-advanced-tabs-block'); ?>
                                                 </a>
                                                 <a href="https://makegutenblock.com/contact" class="available__link web"
-                                                    target="_blank">
+                                                    target="_blank" rel="noopener noreferrer">
                                                     <?php esc_html_e('Send Message', 'sudowp-advanced-tabs-block'); ?>
                                                 </a>
                                                 <a href="https://www.fiverr.com/devs_zak" class="available__link fiverr"
-                                                    target="_blank">
+                                                    target="_blank" rel="noopener noreferrer">
                                                     <?php esc_html_e('Fiverr', 'sudowp-advanced-tabs-block'); ?>
                                                 </a>
                                                 <a href="https://www.upwork.com/freelancers/~010af183b3205dc627"
-                                                    class="available__link upwork" target="_blank">
+                                                    class="available__link upwork" target="_blank" rel="noopener noreferrer">
                                                     <?php esc_html_e('UpWork', 'sudowp-advanced-tabs-block'); ?>
                                                 </a>
                                             </div>
