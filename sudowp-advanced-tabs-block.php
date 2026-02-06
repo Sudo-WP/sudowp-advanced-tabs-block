@@ -34,6 +34,7 @@ final class Plugin
     {
         $this->define_constants();
         $this->includes();
+        $this->init_security_headers();
     }
 
     /**
@@ -74,6 +75,25 @@ final class Plugin
         if (file_exists(ATBS_DIR . '/includes/loader.php')) {
             require_once ATBS_DIR . '/includes/loader.php';
         }
+    }
+
+    /**
+     * Initialize security headers
+     * Adds security headers to admin pages for this plugin
+     */
+    private function init_security_headers(): void
+    {
+        add_action('admin_init', function() {
+            // Only apply to our plugin's admin pages
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Just checking page parameter
+            if (isset($_GET['page']) && sanitize_key($_GET['page']) === 'atbs-block') {
+                // X-Content-Type-Options: prevent MIME type sniffing
+                header('X-Content-Type-Options: nosniff');
+                
+                // X-Frame-Options: prevent clickjacking (allow same origin for iframe embeds)
+                header('X-Frame-Options: SAMEORIGIN');
+            }
+        });
     }
 }
 
